@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class InitData implements CommandLineRunner {
-
+//test
     @Override
     public void run(String... args) throws Exception {
 
