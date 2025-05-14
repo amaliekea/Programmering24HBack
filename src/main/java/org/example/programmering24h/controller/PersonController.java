@@ -6,7 +6,7 @@ import org.example.programmering24h.repositories.PersonRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//hej
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/persons")
