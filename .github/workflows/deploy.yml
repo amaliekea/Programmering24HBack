@@ -40,10 +40,10 @@ jobs:
 
             docker stop mysql || true && docker rm mysql || true
             docker run -d --name mysql --network programmering \
-              -e MYSQL_ROOT_PASSWORD=kode \
-              -e MYSQL_DATABASE=dbnavn \
-              -e MYSQL_USER=brugernavn \
-              -e MYSQL_PASSWORD=kode \
+              -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
+              -e MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} \
+              -e MYSQL_USER=${{ secrets.MYSQL_USER }} \
+              -e MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
               -p 3306:3306 \
               mysql:8
 
