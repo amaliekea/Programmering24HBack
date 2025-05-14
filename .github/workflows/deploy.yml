@@ -50,7 +50,7 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/programmering24hbackend:latest
             docker stop backend || true && docker rm backend || true
             docker run -d --name backend --network programmering -p 8080:8080 \
-              -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/dbnavn \
-              -e SPRING_DATASOURCE_USERNAME=brugernavn \
-              -e SPRING_DATASOURCE_PASSWORD=kode \
+              -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/${{ secrets.MYSQL_DATABASE }} \
+              -e SPRING_DATASOURCE_USERNAME=${{ secrets.MYSQL_USER }} \
+              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
               ${{ secrets.DOCKERHUB_USERNAME }}/programmering24hbackend:latest
