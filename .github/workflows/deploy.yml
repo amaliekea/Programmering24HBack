@@ -38,7 +38,11 @@ jobs:
           script: |
             docker network create programmering || true
 
-            docker stop mysql || true && docker rm mysql || true
+            # Stop og fjern mysql container hvis den eksisterer (uanset status)
+            if [ "$(docker ps -aq -f name=mysql)" ]; then
+              docker rm -f mysql
+            fi
+
             docker run -d --name mysql --network programmering \
               -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
               -e MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} \
